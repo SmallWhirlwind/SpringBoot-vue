@@ -1,0 +1,26 @@
+node {
+    stage('Download Project') {
+        git 'https://github.com/anychart-integrations/java-jsp-jdbc-mysql-template.git'
+    }
+    stage('Run Unit test') {
+        sh '''mvn test'''
+    }
+    stage('Build Back') {
+        sh '''mvn package'''
+    }
+    stage('Build Front') {
+        sh '''cd frontend
+              npm install
+              npm run build
+              tar czvf dist.tar dist'''
+    }
+    stage('Deploy jar package to service') {
+        sh '''ansible-playbook ../scripts/deploy_jar.yml'''
+    }
+    stage('Deploy front package to service') {
+        sh '''ansible-playbook ../scripts/deploy_front.yml'''
+    }
+    stage('Deploy jar package to service') {
+        sh '''ansible-playbook ../scripts/run_jar.yml'''
+    }
+}

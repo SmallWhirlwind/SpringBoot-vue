@@ -1,0 +1,10 @@
+---
+- name: build a Jenkins Service
+  hosts: test_vagrant
+  sudo: true
+  remote_user: vagrant
+  tasks:
+    - name: Copy front package
+      copy:
+        src: ../frontend/dist.tar
+        dest: /var

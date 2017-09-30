@@ -1,10 +1,11 @@
  /*
   * below to information is fake data or fiction data.Please don't take for reality.
   */
+CREATE DATABASE IF NOT EXISTS anychart_db;
+USE anychart_db;
 
+CREATE TABLE IF NOT EXISTS persons (id  integer, create_datetime datetime, email varchar(255), phone varchar(255), sex varchar(255), username varchar(255), zone blob, primary key (id));
 
-/* CREATE TABLE persons (id  integer, create_datetime datetime, email varchar(255), phone varchar(255), sex varchar(255), username varchar(255), zone blob, primary key (id));
-*/
 
 
 INSERT INTO persons (create_datetime, email, phone, sex, username, zone) VALUES (datetime('now'), 'gubaoer@hotmail.com', 08613000001111, 'male', 'gubaoer', 'HongKou District');
