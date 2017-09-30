@@ -1,0 +1,10 @@
+---
+- name: build a Jenkins Service
+  hosts: test_vagrant
+  sudo: true
+  remote_user: vagrant
+  tasks: 
+    - name: Copy project jar
+      copy:
+        src: ../target/springboot_vue-0.0.1-SNAPSHOT.jar
+        dest: /var
